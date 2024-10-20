@@ -87,7 +87,7 @@ export default () => {
                             }
                         </ul>
                         <ProfileDropDown 
-                            class="mt-5 pt-5 border-t lg:hidden"
+                            class="mt-5 pt-5 border-t lg:hidden z-50"
                         />
                     </div>
                     <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
@@ -102,7 +102,7 @@ export default () => {
                             />
                         </form>
                         <ProfileDropDown 
-                            class="hidden lg:block"
+                            class="hidden lg:block z-50"
                         />
                         <button 
                             className="outline-none text-gray-400 block lg:hidden"
