@@ -78,7 +78,8 @@ export default () => {
                         <ul className="mt-12 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0">
                             {
                                 navigation.map((item, idx) => (
-                                    <li key={idx} className="text-blue-950 relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-blue-950 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-1000 after:origin-left">
+                                    <li key={idx} 
+                                    className=" text-gray-900 relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-gray-900 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-1000 after:origin-left">
                                         <a href={item.path}>
                                             {item.title}
                                         </a>

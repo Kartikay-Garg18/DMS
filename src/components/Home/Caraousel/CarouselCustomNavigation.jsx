@@ -3,7 +3,7 @@ import { Carousel } from "@material-tailwind/react";
 function CarouselCustomNavigation() {
   return (
     <Carousel
-      className="rounded-xl z-40"
+      className="z-40 h-[80vh]"
       autoplay={true} 
       autoplayDelay={3000} 
       loop={true} 
@@ -24,22 +24,22 @@ function CarouselCustomNavigation() {
       <img
         src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hhcml0eXxlbnwwfHwwfHx8MA%3D%3D"
         alt="image 1"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-fit"
       />
       <img
         src="https://images.gofundme.com/VDivmXwnw5CJK2zkJjHlVCR6mO0=/1200x800/https://d2g8igdw686xgo.cloudfront.net/56384756_1619456772543172_r.jpeg"
         alt="image 2"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-fit"
       />
       <img
         src="http://chetanrana.in/wp-content/uploads/2022/03/pexels-photo-6647119.jpeg"
         alt="image 3"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-fit"
       />
       <img
         src="https://cleanwaterinternational.org/wp-content/uploads/2021/11/addtext_com_MDEzNzE5MTY5NjM-min.jpg"
         alt="image 4"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-fit"
       />
     </Carousel>
   );
