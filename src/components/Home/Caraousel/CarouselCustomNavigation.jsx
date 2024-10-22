@@ -3,7 +3,7 @@ import { Carousel } from "@material-tailwind/react";
 function CarouselCustomNavigation() {
   return (
     <Carousel
-      className="z-40 h-[80vh]"
+      className="z-40 h-[90vh]"
       autoplay={true} 
       autoplayDelay={3000} 
       loop={true} 
