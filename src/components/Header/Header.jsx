@@ -36,11 +36,11 @@ const ProfileDropDown = (props) => {
                     <span className="block text-sm text-gray-500">john@gmail.com</span>
                 </div>
             </div>
-            <ul className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? '' : 'lg:hidden'}`}>
+            <ul className={`bg-white top-12 right-0 mt-2 z-90 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? '' : 'lg:hidden'}`}>
                 {
                     navigation.map((item, idx) => (
                         <li>
-                            <a key={idx} className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5" href={item.path}>
+                            <a key={idx} className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5 z-90" href={item.path}>
                                 {item.title}
                             </a>
                         </li>
@@ -63,7 +63,7 @@ export default () => {
   ]
     return (
         <nav className="bg-white border-b">
-            <div className="flex items-center space-x-8 py-3 px-4 max-w-screen-xl mx-auto md:px-8">
+            <div className="flex items-center space-x-8 px-4 max-w-screen-xl mx-auto md:px-8">
                 <div className="flex-none lg:flex-initial">
                     <a href="javascript:void(0)">
                         <img
@@ -74,12 +74,12 @@ export default () => {
                     </a>
                 </div>
                 <div className="flex-1 flex items-center justify-between">
-                    <div className={`bg-white absolute z-20 w-full top-16 left-0 p-4 border-b lg:static lg:block lg:border-none ${menuState ? '' : 'hidden'}`}>
-                        <ul className="mt-12 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0">
+                    <div className={`bg-white absolute z-90 w-full top-16 left-0 p-4 border-b lg:static lg:block lg:border-none ${menuState ? '' : 'hidden'}`}>
+                        <ul className="z-90 mt-12 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0">
                             {
                                 navigation.map((item, idx) => (
                                     <li key={idx} 
-                                    className=" text-gray-900 relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-gray-900 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-1000 after:origin-left">
+                                    className="z-90 text-gray-900 relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-gray-900 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-1000 after:origin-left">
                                         <a href={item.path}>
                                             {item.title}
                                         </a>
