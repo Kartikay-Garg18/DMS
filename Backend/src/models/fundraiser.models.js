@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2';
+
 const fundraiserSchema = new mongoose.Schema(
   {
     title:{
@@ -60,4 +62,7 @@ const fundraiserSchema = new mongoose.Schema(
   },
   {timestamps: true}
 );
+
+fundraiserSchema.plugin(mongooseAggregatePaginate);
+
 export const Fundraiser = mongoose.model('Fundraiser', fundraiserSchema);
