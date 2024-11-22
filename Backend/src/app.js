@@ -1,7 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from "cors"
-import User from './src/models/user.models.js';
+import User from './models/user.models.js';
 
 const app = express()
 
@@ -29,3 +29,5 @@ app.post('/create-user', async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+
+export default app;
