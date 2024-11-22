@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react"
 
-// Profile Dropdown
 const ProfileDropDown = (props) => {
 
     const [state, setState] = useState(false)
@@ -55,11 +54,10 @@ export default () => {
 
     const [menuState, setMenuState] = useState(false)
 
-  // Replace javascript:void(0) path with your path
   const navigation = [
-      { title: "Browse Fundraisers", path: "javascript:void(0)" },
-      { title: "Start a Fundraiser", path: "javascript:void(0)" },
-      { title: "Donate Now", path: "javascript:void(0)" },
+      { title: "Browse Fundraisers", path: "/browse" },
+      { title: "Start a Fundraiser", path: "/start-campaign" },
+      { title: "Donate Now", path: "/donate" },
   ]
     return (
         <nav className="bg-white border-b">
