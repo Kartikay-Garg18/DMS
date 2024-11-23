@@ -51,9 +51,9 @@ function Register(){
         }
       };
     return (
-        <div className="flex flex-col items-center justify-center p-5 bg-gray-200">
-        <div className="p-4 bg-white rounded-xl">
-          <Card color="transparent" shadow={true} className="">
+        <div className="flex flex-col items-center justify-center p-5 ">
+        <div className="p-4 bg-white rounded-xl shadow-lg">
+          <Card color="transparent" shadow={false} className="p-4">
             <Typography variant="h4" color="blue-gray" className="text-center">
               Sign Up
             </Typography>

@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Events from './components/Events';
 import Register from './components/Register';
 import { Outlet } from 'react-router-dom';
+import FundCard from './components/Events/FundCard';
 function App() {
 
   return (
