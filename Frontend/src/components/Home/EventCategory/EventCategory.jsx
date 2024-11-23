@@ -45,7 +45,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/healthcare.svg"
+            src="https://uxwing.com/wp-content/themes/uxwing/download/medical-science-lab/healthcare-icon.png"
             alt=""
           />
         </div>
@@ -94,7 +94,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/education.svg"
+            src="https://uxwing.com/wp-content/themes/uxwing/download/education-school/education-icon.png"
             alt=""
           />
         </div>
@@ -142,7 +142,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/food.svg"
+            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/food-aid-4192548-3469720.png?f=webp&w=256"
             alt=""
           />
         </div>
@@ -239,14 +239,14 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/disaster.svg"
+            src="https://www.svgrepo.com/show/172049/animal-shelter.svg"
             alt=""
           />
         </div>
         <div className="relative text-white px-6 pb-6 mt-6">
           
           <div className="flex justify-center">
-            <span className="block font-semibold text-xl">Disaster Relief</span>
+            <span className="block font-semibold text-xl">Animals</span>
             
           </div>
         </div>
