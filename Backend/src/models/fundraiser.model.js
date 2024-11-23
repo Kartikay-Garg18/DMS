@@ -30,7 +30,7 @@ const fundraiserSchema = new mongoose.Schema(
     },
     category:{
       type: String,
-      enum: ["HealthCare", "Education Aid", "Animals", "Orphan Care","Food Banks","Other"],
+      enum: ["HealthCare", "Education Aid", "Animal Welfare", "Orphan Care","Food Banks","Other"],
       required: [true, "Category is required"],
     },
     startDate:{
