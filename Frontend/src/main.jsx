@@ -8,6 +8,7 @@ import './index.css'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
+import { store } from './store/store.js'
 
 const router = createBrowserRouter([
   {
@@ -41,9 +42,9 @@ const router = createBrowserRouter([
 import { ThemeProvider } from "@material-tailwind/react";
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <Provider store={store}>
     <ThemeProvider>
       <RouterProvider router={router} />
     </ThemeProvider>
-  </StrictMode>,
+  </Provider>
 )

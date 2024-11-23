@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import CarouselCustomNavigation from "./Home/Caraousel/CarouselCustomNavigation";
-import axios from "axios";
+import { login } from "../services/auth";
+import { useDispatch } from 'react-redux'
+import { login as authLogin } from '../store/authSlice'
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleLogin = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_APP_API_URI}/login`, {
+      const data = await login({
         email,
         password
-      }, { withCredentials: true })
-      window.location.href = "/"
+      })
+      dispatch(authLogin(data))
+      navigate('/')
     } catch (error) {
       alert("Invalid credentials")
     }
