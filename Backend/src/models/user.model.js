@@ -5,27 +5,32 @@ import bcrypt from "bcrypt";
 const userSchema = new mongoose.Schema(
   {
     name:{
-      type:String,
-      required:true,
+      type: String,
+      required: true,
       trim: true
     },
     email:{
-      type:String,
+      type: String,
       required: true, 
       unique: true,
-      trim:  true
+      trim:  true,
+      lowercase : true,
+      index: true
     },
     password:{
-      type:String,
-      required:true,
-      minlength:6,
+      type: String,
+      required: true,
+      minlength: 6,
     },
     phoneNumber:{
-      type:String,
+      type: String,
       required: true,
-      minlength:10,
-      maxlength : 10
+      minlength: 10,
+      maxlength: 10
     },
+    refreshToken : {
+      type : String
+    }
   },
   {
     timestamps: true,
@@ -63,5 +68,4 @@ userSchema.methods.generateRefreshToken = function(){
     })
 }
 
-const User = mongoose.model('User', userSchema);
-export default User;
+export const User = mongoose.model('User', userSchema);

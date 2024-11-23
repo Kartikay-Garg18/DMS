@@ -1,1 +1,1 @@
-export const DB_NAME = "streaming"
+export const DB_NAME = "donation"
