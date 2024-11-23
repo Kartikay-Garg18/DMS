@@ -4,10 +4,8 @@ import cors from "cors"
 
 const app = express()
 
-console.log(process.env.CORS_ORIGIN);
-
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.CORS_ORIGIN,
     credentials: true
 }))
 
@@ -22,6 +20,6 @@ app.use(cookieParser())
 
 import userRouter from "./routes/user.routes.js";
 
-app.use("/users", userRouter);
+app.use("/", userRouter);
 
 export default app;
