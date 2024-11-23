@@ -6,15 +6,13 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Events from './components/Events';
 import Register from './components/Register';
+import { Outlet } from 'react-router-dom';
 function App() {
 
   return (
     <>
     <Header/>
-    {/* <Home/>
-    <Login/>
-    <Register/> */}
-    <Events></Events>
+    <Outlet/>
     <Footer/>
     </>
       

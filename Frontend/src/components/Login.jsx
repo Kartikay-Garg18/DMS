@@ -7,6 +7,18 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleLogin = async () => {
+    try {
+      await axios.post(`${import.meta.env.VITE_APP_API_URI}/login`, {
+        email,
+        password
+      }, { withCredentials: true })
+      window.location.href = "/"
+    } catch (error) {
+      alert("Invalid credentials")
+    }
+  }
+
   return (
     <div className="flex items-center justify-center h-screen w-full px-5 sm:px-0">
       <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-4xl w-full">
@@ -46,23 +58,14 @@ const Login = () => {
           </div>
           <div className="mt-8">
             <button className="bg-blue-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600"
-            onClick={()=>{
-              axios.post(`${import.meta.env.VITE_APP_API_URI}/login`, {
-                email,
-                password
-              }, { withCredentials: true }).then((response) => {
-                console.log(response.data);
-              }).catch((error) => {
-                console.log(error);
-              });
-            }}
+            onClick={handleLogin}
             >
               Login
             </button>
           </div>
           <div className="mt-4 flex items-center w-full text-center">
             <a
-              href="#"
+              href="/register"
               className="text-xs text-gray-500 capitalize text-center w-full"
             >
               Don&apos;t have any account yet?
