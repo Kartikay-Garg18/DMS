@@ -45,7 +45,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/healthcare.svg"
+            src="../../../../images/healthcare.svg"
             alt=""
           />
         </div>
@@ -94,7 +94,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/education.svg"
+            src="../../../../images/education.svg"
             alt=""
           />
         </div>
@@ -142,7 +142,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/food.svg"
+            src="../../../../images/food.svg"
             alt=""
           />
         </div>
@@ -191,7 +191,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/baby.png"
+            src="../../../../images/baby.png"
             alt=""
           />
         </div>
@@ -239,7 +239,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/disaster.svg"
+            src="../../../../images/disaster.svg"
             alt=""
           />
         </div>

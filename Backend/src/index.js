@@ -6,11 +6,12 @@ dotenv.config({
     path: './.env'
 })
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5173;
 connect()
 .then(() => {
     app.listen(port, () =>{
         console.log(`Server is running on port ${port}`);
+        console.log(`http://localhost:${port}`);
     })
 })
 .catch((err) => {
