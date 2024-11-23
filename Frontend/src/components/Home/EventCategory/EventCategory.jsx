@@ -191,7 +191,7 @@ const EventCategory = () => {
           ></div>
           <img
             className="relative w-40"
-            src="../../../../public/images/baby.png"
+            src="../../../../images/baby.png"
             alt=""
           />
         </div>

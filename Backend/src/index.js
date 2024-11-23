@@ -10,7 +10,7 @@ const port = process.env.PORT || 8000;
 connect()
 .then(() => {
     app.listen(port, () =>{
-        console.log(`Server is running on port ${port}`);
+        console.log(`Server is running on port ${process.env.CORS_ORIGIN}`);
     })
 })
 .catch((err) => {
