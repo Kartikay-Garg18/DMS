@@ -37,4 +37,13 @@ const logout = async () => {
   }
 }
 
-export { createAccount, login, logout };
+const getCurrentUser = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/user`);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
+export { createAccount, login, logout, getCurrentUser };

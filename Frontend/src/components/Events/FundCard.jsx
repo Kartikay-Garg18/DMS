@@ -11,7 +11,7 @@ function FundCard(props) {
   const [isLive, setIsLive] = useState(props.isLive);
 
   useEffect(() => {
-    const endDate = parse(props.endDate, 'dd-MM-yy', new Date());
+    const endDate = parse(props.endDate, 'yyyy-MM-dd', new Date());
     const today = new Date();
     if (isAfter(today, endDate)) {
       setIsLive(false);
@@ -76,7 +76,7 @@ function FundCard(props) {
         </Typography>
         <div className="mt-4 flex justify-between items-center">
           <Typography color="red" className="font-semibold text-xl">
-          {formatCurrency(props.amtCollected)} raised
+          {formatCurrency(props.amt)} raised
           </Typography>
           <Typography color="gray" className="text-sm">
             by {props.fundRaiser}

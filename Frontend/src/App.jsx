@@ -1,14 +1,27 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import Home from './components/Home';
-import Login from './components/Login';
-import Events from './components/Events';
-import Register from './components/Register';
 import { Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {login, logout} from './store/authSlice'
+import { getCurrentUser } from './services/auth'
+
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getCurrentUser()
+        dispatch(login(data))
+      } catch (error) {
+        dispatch(logout())
+      }
+    }
+    fetchUser()
+  }, [])
 
   return (
     <>
