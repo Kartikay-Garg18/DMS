@@ -8,6 +8,7 @@ import './index.css'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
+import FundRaiserForm from './components/FundRaiserForm.jsx'
 
 import Events from './components/Events'
 
@@ -41,8 +42,14 @@ const router = createBrowserRouter([
       {
         path: '/events',
         element: (
+              <Events/>  
+        )
+      },
+      {
+        path: '/fundRaiser',
+        element: (
           // <AuthLayout authentication={false}>
-              <Events/>
+            <FundRaiserForm/>
           // </AuthLayout>
         )
       }
