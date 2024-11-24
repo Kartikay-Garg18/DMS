@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import {Card,Input,Checkbox,Button,Typography,}  from "@material-tailwind/react";
+import {createAccount, login} from "../services/auth";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { login as authLogin } from '../store/authSlice'
 
 function Register(){
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
-        username: '',
+        fullName: '',
         email: '',
         phone: '',
         password: '',
@@ -40,14 +46,28 @@ function Register(){
         });
       };
 
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate();
         if (Object.keys(validationErrors).length > 0) {
           setErrors(validationErrors);
         } else {
-          // Submit the form
-          console.log('Form submitted', formData);
+          try {
+            await createAccount({
+              name:formData.fullName,
+              email:formData.email,
+              password:formData.password,
+              phoneNumber:formData.phone
+          })
+
+            const data = await login({ email: formData.email, password: formData.password });
+
+            dispatch(authLogin(data));
+
+            navigate('/')
+          } catch (error) {
+            alert("Already register with this email")
+          }
         }
       };
     return (

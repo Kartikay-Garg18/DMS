@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5173';
+const API_URL = import.meta.env.VITE_APP_API_URI;
 
-const createAccount = async (name, email, password, phoneNumber) => {
+const createAccount = async (data) => {
   try {
     const response = await axios.post(`${API_URL}/register`, {
-      name,
-      email,
-      password,
-      phoneNumber
+      name:data.name,
+      email:data.email,
+      password : data.password,
+      phoneNumber : data.phoneNumber
     });
     return response.data;
   } catch (error) {
@@ -16,11 +16,11 @@ const createAccount = async (name, email, password, phoneNumber) => {
   }
 }
 
-const login = async (email, password) => {
+const login = async (data) => {
   try {
     const response = await axios.post(`${API_URL}/login`, {
-      email,
-      password
+      email : data.email,
+      password : data.password
     });
     return response.data;
   } catch (error) {
@@ -37,4 +37,4 @@ const logout = async () => {
   }
 }
 
-export default { createAccount, login, logout };
+export { createAccount, login, logout };

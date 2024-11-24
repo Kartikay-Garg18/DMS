@@ -1,9 +1,12 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ProfileDropDown = (props) => {
 
     const [state, setState] = useState(false)
     const profileRef = useRef()
+    const authStatus = useSelector((state) => state.auth.status);
 
     const navigation = [
         { title: "Dashboard", path: "javascript:void(0)" },
@@ -22,14 +25,13 @@ const ProfileDropDown = (props) => {
     return (
         <div className={`relative ${props.class}`}>
             <div className="flex items-center space-x-4">
-                <button ref={profileRef} className="w-10 h-10 outline-none rounded-full "
+                {authStatus ? <button ref={profileRef} className="w-10 h-10 outline-none rounded-full "
                     onClick={() => setState(!state)}
-                >
-                    <img
+                ><img
                         src="https://img.icons8.com/?size=100&id=teAmm8wzAnK7&format=png&color=000000"
                         className="w-full h-full rounded-full object-fill"
                     />
-                </button>
+                </button> : <Link to="/login" className="text-gray-900 px-4 py-2 rounded-full border">Login/Register</Link>}
                 <div className="lg:hidden">
                     <span className="block">Micheal John</span>
                     <span className="block text-sm text-gray-500">john@gmail.com</span>
@@ -90,16 +92,7 @@ export default () => {
                         />
                     </div>
                     <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
-                        <form className="flex items-center space-x-2 border rounded-md p-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-none text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                            <input
-                                className="w-full outline-none appearance-none placeholder-gray-500 text-gray-500 sm:w-auto"
-                                type="text"
-                                placeholder="Search by category"
-                            />
-                        </form>
+                        
                         <ProfileDropDown 
                             class="hidden lg:block z-50"
                         />
