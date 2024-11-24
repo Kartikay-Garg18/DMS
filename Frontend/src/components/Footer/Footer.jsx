@@ -24,7 +24,7 @@ export default () => {
     return (
         <footer className="text-gray-500 bg-white px-4 py-5 max-w-screen-xl mx-auto md:px-8">
             <div className="max-w-lg sm:mx-auto sm:text-center">
-                <img src="../../../public/images/logo.png" className="w-32 mx-auto " />
+                <img src="../../../images/logo.png" className="w-32 mx-auto " />
                 <p className="leading-relaxed mt-2 text-[15px]">
                 At Daan, we believe in the power of giving. Our platform connects donors with those in need, ensuring that every contribution goes toward making a meaningful impact. Join us in our mission to spread kindness and uplift communities through responsible giving.
                 </p>
