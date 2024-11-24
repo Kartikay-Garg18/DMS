@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: '/fundRaiser',
+        path: '/new-campaign',
         element: (
           // <AuthLayout authentication={false}>
             <FundRaiserForm/>

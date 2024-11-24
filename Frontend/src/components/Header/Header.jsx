@@ -11,7 +11,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const navigation = [
         { title: "Browse Fundraisers", path: "/events" },
-        { title: "Start a Fundraiser", path: "/create" }
+        { title: "Start a Fundraiser", path: "/new-campaign" }
     ]
     return (
         <div>
