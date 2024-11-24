@@ -8,6 +8,7 @@ import './index.css'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
+import Events from './components/Events'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
         element: (
           // <AuthLayout authentication={false}>
               <Register />
+          // </AuthLayout>
+        )
+      },
+      {
+        path: '/events',
+        element: (
+          // <AuthLayout authentication={false}>
+              <Events/>
           // </AuthLayout>
         )
       }

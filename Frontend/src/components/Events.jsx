@@ -5,6 +5,7 @@ import MainContent from './Events/MainContent';
 function Events() {
 
     const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     const handleResize = () => {
       if (window.innerWidth <= 768) {
@@ -24,14 +25,14 @@ function Events() {
     }, []);
   
     return(
-        <>
-            <div className="flex">
-                {isSidebarVisible && (
-                    <SideBar></SideBar>)
-                }
-                <MainContent></MainContent>
-            </div>
-        </>
+      <div className="flex">
+      {isSidebarVisible && (
+        <SideBar setSelectedCategory={setSelectedCategory} />
+      )}
+      <div className={`flex-1 ${isSidebarVisible ? 'ml-[20rem]' : ''}`}>
+      <MainContent selectedCategory={selectedCategory} />
+      </div>
+    </div>
   );
 }
 
