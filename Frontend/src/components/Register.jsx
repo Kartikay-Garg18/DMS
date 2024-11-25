@@ -203,3 +203,22 @@ function Register(){
 }
 
 export default Register;
+
+{/* <div className="col-span-full">
+                <label
+                          htmlFor="file-upload"
+                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                        >
+
+                      Upload Profile Photo
+                      <input id="file-upload" name="file-upload" type="file"
+                      accept="image/png, image/jpeg, image/gif"
+                       className="sr-only" />
+                    
+                          
+                        </label>
+                  <div className="mt-2 flex items-center gap-x-3">
+                    <UserCircleIcon aria-hidden="true" className="size-12 text-gray-300" />
+                    
+                  </div>
+                </div> */}
