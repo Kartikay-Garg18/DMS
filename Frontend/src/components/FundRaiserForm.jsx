@@ -9,9 +9,9 @@ function FundRaiserForm(){
 
   const handleReset = () => {
     if (formRef.current) {
-      formRef.current.reset(); // Reset the form fields
-      setFile(null); // Clear the file state
-      setQrCodeFile(null); // Clear the QR code file state
+      formRef.current.reset();
+      setFile(null); 
+      setQrCodeFile(null); 
     }
   };
 
@@ -308,15 +308,15 @@ function FundRaiserForm(){
                 </div>
     
                 <div className="col-span-full">
-                  <label htmlFor="street-address" className="block text-md/6 font-medium text-gray-900">
+                  <label htmlFor="street_address" className="block text-md/6 font-medium text-gray-900">
                     Street address
                   </label>
                   <div className="mt-2">
                     <input
-                      id="street-address"
-                      name="street-address"
+                      id="street_address"
+                      name="street_address"
                       type="text"
-                      autoComplete="street-address"
+                      autoComplete="street_address"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                     />
                   </div>
@@ -355,15 +355,15 @@ function FundRaiserForm(){
                 </div>
     
                 <div className="sm:col-span-2">
-                  <label htmlFor="postal-code" className="block text-md/6 font-medium text-gray-900">
+                  <label htmlFor="postal_code" className="block text-md/6 font-medium text-gray-900">
                     ZIP / Postal code
                   </label>
                   <div className="mt-2">
                     <input
-                      id="postal-code"
-                      name="postal-code"
+                      id="postal_code"
+                      name="postal_code"
                       type="text"
-                      autoComplete="postal-code"
+                      autoComplete="postal_code"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                     />
                   </div>
