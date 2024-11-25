@@ -1,24 +1,39 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import React, { useRef } from 'react'
+import React, { useRef,useState } from 'react'
 
 function FundRaiserForm(){
 
   const formRef = useRef(null);
+  const [file, setFile] = useState(null);
+  const [qrCodeFile, setQrCodeFile] = useState(null);
 
-  const handleCancel = () => {
+  const handleReset = () => {
     if (formRef.current) {
       formRef.current.reset(); // Reset the form fields
+      setFile(null); // Clear the file state
+      setQrCodeFile(null); // Clear the QR code file state
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault(); 
 
     const formData = new FormData(formRef.current); // 
     const formObject = Object.fromEntries(formData.entries()); 
 
+    formObject.beneficiaryImage = file;
+    formObject.qrImage = qrCodeFile;
+
     console.log(formObject); 
   };
 
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]); 
+  };
+
+  const handleQrCodeFileChange = (event) => {
+    setQrCodeFile(event.target.files[0]); 
+  };
 
     return (
         <div className='flex flex-col justify-center items-center mx-[15%] my-[5%] rounded-lg shadow-lg'>
@@ -33,7 +48,7 @@ function FundRaiserForm(){
     
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-4">
-                  <label htmlFor="Benificiary Name" className="block text-md/6 font-medium text-gray-900">
+                  <label htmlFor="username" className="block text-md/6 font-medium text-gray-900">
                     Benificiary Name<span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
@@ -84,45 +99,67 @@ function FundRaiserForm(){
                   </div>
                   
                 </div>
-    
-                <div className="col-span-full">
-                <label
-                          htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                        >
 
-                      Upload Profile Photo
-                      <input id="file-upload" name="file-upload" type="file"
-                      accept="image/png, image/jpeg, image/gif"
-                       className="sr-only" />
-                    
-                          
-                        </label>
-                  <div className="mt-2 flex items-center gap-x-3">
-                    <UserCircleIcon aria-hidden="true" className="size-12 text-gray-300" />
-                    
+                <div className="sm:col-span-3">
+                  <label htmlFor="category" className="block text-md/6 font-medium text-gray-900">
+                    Choose Category<span className="text-red-500">*</span>
+                  </label>
+                  <div className="mt-2">
+                    <select
+                      id="category"
+                      name="category"
+                      required
+                      autoComplete="category-name"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm/6" 
+                    >
+                      <option>HealthCare</option>
+                      <option>Education Aid</option>
+                      <option>Animal Welfare</option>
+                      <option>Orphan Care</option>
+                      <option>Food Banks</option>
+                      <option selected>Other</option>
+                      
+                    </select>
                   </div>
                 </div>
     
+    
+                
+    
                 <div className="col-span-full">
-                  <label htmlFor="cover-photo" className="block text-md/6 font-medium text-gray-900">
+                  <label htmlFor="beneficiaryImage" className="block text-md/6 font-medium text-gray-900">
                     Add a photo of the benificiary/patient
                   </label>
                   <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                     <div className="text-center">
-                      <PhotoIcon aria-hidden="true" className="mx-auto size-12 text-gray-300" />
+                      
+                      {!file && (<PhotoIcon aria-hidden="true" className="mx-auto size-12 text-gray-300" />)}
+                      
                       <div className="mt-4 flex text-sm/6 text-gray-600">
                         <label
-                          htmlFor="file-upload"
+                          htmlFor="beneficiaryImage"
                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
+                          {!file && (
+                            <div>
                           <span>Upload a file</span>
-                          <input id="file-upload" name="file-upload" type="file" className="sr-only"
+                          <input id="beneficiaryImage" name="beneficiaryImage" type="file" className="sr-only" onChange={handleFileChange}
                           accept="image/png, image/jpeg, image/gif"  />
-                        </label>
                         <p className="pl-1">or drag and drop</p>
+                        </div>
+                          )}
+                        </label>
+                        {file && (
+                        <div className="mt-2">
+                          <img src={URL.createObjectURL(file)} alt="Uploaded"  />
+                          <button type="button" onClick={() => setFile(null)} className="text-red-500">Remove</button>
+                        </div>
+              )}
                       </div>
+                      
+                      {!file && (
                       <p className="text-xs/5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                    )}
                     </div>
                   </div>
                 </div>
@@ -418,33 +455,48 @@ function FundRaiserForm(){
                 </div>
 
                 <div className="col-span-full">
-                  <label htmlFor="qr" className="block text-md/6 font-medium text-gray-900">
-                    Add a photo of QR Code(Optional)
+                  <label htmlFor="qrImage" className="block text-md/6 font-medium text-gray-900">
+                    Add a photo of the QR Code(Optional)
                   </label>
                   <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                     <div className="text-center">
-                      <PhotoIcon aria-hidden="true" className="mx-auto size-12 text-gray-300" />
+                      
+                      {!qrCodeFile && (<PhotoIcon aria-hidden="true" className="mx-auto size-12 text-gray-300" />)}
+                      
                       <div className="mt-4 flex text-sm/6 text-gray-600">
                         <label
-                          htmlFor="file-upload"
+                          htmlFor="qrImage"
                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
-                          <span>Upload photo of QR Code</span>
-                          <input id="qr" name="qr" type="file" className="sr-only"
-                          accept="image/png, image/jpeg, image/gif" />
-                        </label>
+                          {!qrCodeFile && (
+                            <div>
+                          <span>Upload a file</span>
+                          <input id="qrImage" name="qrImage" type="file" className="sr-only" onChange={handleQrCodeFileChange}
+                          accept="image/png, image/jpeg, image/gif"  />
                         <p className="pl-1">or drag and drop</p>
+                        </div>
+                          )}
+                        </label>
+                        {qrCodeFile && (
+                        <div className="mt-2">
+                          <img src={URL.createObjectURL(qrCodeFile)} alt="Uploaded"  />
+                          <button type="button" onClick={() => setQrCodeFile(null)} className="text-red-500">Remove</button>
+                        </div>
+              )}
                       </div>
+                      
+                      {!qrCodeFile && (
                       <p className="text-xs/5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-                    </div>
+                    )}
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
+            </div>
     
           <div className="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" className="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 hover:text-white" onClick={handleCancel}>
-              Cancel
+            <button type="button" className="rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 hover:text-white" onClick={handleReset}>
+              Reset
             </button>
             <button
               type="submit"
