@@ -1,6 +1,15 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const API_URL = import.meta.env.VITE_APP_API_URI;
+
+const setAccessToken = async (token) => {
+  await Cookies.set('accessToken', token, { expires: 1 });
+};
+
+const setRefreshToken = async (token) => {
+  await Cookies.set('refreshToken', token, { expires: 7 });
+};
 
 const createAccount = async (data) => {
   try {
@@ -12,7 +21,7 @@ const createAccount = async (data) => {
     });
     return response.data;
   } catch (error) {
-    return error.response.data;
+    throw error;
   }
 }
 
@@ -22,6 +31,8 @@ const login = async (data) => {
       email : data.email,
       password : data.password
     });
+    await setAccessToken(response.data.data.accessToken);
+    await setRefreshToken(response.data.data.refreshToken);
     return response.data;
   } catch (error) {
     return error.response.data;
@@ -39,7 +50,14 @@ const logout = async () => {
 
 const getCurrentUser = async () => {
   try {
-    const response = await axios.get(`${API_URL}/user`);
+    const accessToken = Cookies.get('accessToken');
+    if(!Cookies.get('accessToken')) return { error: 'No access token found' };
+
+    const response = await axios.get(`${API_URL}/user`,{
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     return response.data;
   } catch (error) {
     return error.response.data;

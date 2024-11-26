@@ -47,11 +47,6 @@ const fundraiserSchema = new mongoose.Schema(
         message: "End date must be after the start date",
       },
     },
-    status:{
-      type: String,
-      enum: ["Active", "Completed", "Cancelled"],
-      default: "Active",
-    },
     supporters: [
       {
         userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -59,6 +54,24 @@ const fundraiserSchema = new mongoose.Schema(
         date: { type: Date, default: Date.now },
       },
     ],
+    beneficiaryImage : {
+      type: String,
+      required: [true, "Beneficiary image is required"],
+    },
+    bankDetails: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Bank',
+      required: [true, "Bank details are required"],
+    },
+    slug: {
+      type: String,
+      required: [true, "Slug is required"],
+      unique: true
+    },
+    beneficiaryName : {
+      type: String,
+      required: [true, "Beneficiary name is required"],
+    }
   },
   {timestamps: true}
 );

@@ -1,11 +1,22 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import React, { useRef,useState } from 'react'
+import React, { useRef,useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { createCampaign, getSingleCampaign } from '../services/campaigns';
+
 
 function FundRaiserForm(){
-
+  const navigate = useNavigate();
   const formRef = useRef(null);
   const [file, setFile] = useState(null);
   const [qrCodeFile, setQrCodeFile] = useState(null);
+  const authStatus = useSelector((state) => state.auth.status);
+  
+  useEffect(() => {
+    if (!authStatus) {
+      navigate('/register');
+    }
+  }, []);
 
   const handleReset = () => {
     if (formRef.current) {
@@ -15,7 +26,7 @@ function FundRaiserForm(){
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); 
 
     const formData = new FormData(formRef.current); // 
@@ -24,7 +35,11 @@ function FundRaiserForm(){
     formObject.beneficiaryImage = file;
     formObject.qrImage = qrCodeFile;
 
-    console.log(formObject); 
+    const data = createCampaign(formObject);
+    if(data){
+      await getSingleCampaign(data.slug);
+    }
+    // console.log(formObject); 
   };
 
   const handleFileChange = (event) => {
