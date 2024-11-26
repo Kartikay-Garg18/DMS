@@ -11,6 +11,7 @@ import Register from './components/Register'
 import FundRaiserForm from './components/FundRaiserForm.jsx'
 
 import Events from './components/Events'
+import Profile from './components/Profile'
 
 import { store } from './store/store.js';
 
@@ -92,7 +93,13 @@ const router = createBrowserRouter([
             <Campaign {...obj}></Campaign>
           // </AuthLayout>
         )
-      }
+      },
+      {
+        path: '/profile',
+        element: (
+              <Profile/>  
+        )
+      },
     ]
   }
 ])
