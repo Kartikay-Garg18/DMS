@@ -33,13 +33,10 @@ const Header = () => {
                     }
                     {
                         authStatus? (
-                            <Link to="/" className="text-gray-900 hover:text-gray-800 w-10 h-10"><img
+                            <Link to="/profile" className="text-gray-900 hover:text-gray-800 w-10 h-10"><img
                             src="https://img.icons8.com/?size=100&id=teAmm8wzAnK7&format=png&color=000000"
                             className="w-full h-full rounded-full object-fill"
-                            onClick={async () =>{
-                                const data = await authLogout();
-                                dispatch(logout())
-                            }}
+                            
                         /></Link>
                         ) : (
                             <Link to="/login" className="text-gray-900 px-4 py-2 rounded-full border no-underline">Login/Register</Link>

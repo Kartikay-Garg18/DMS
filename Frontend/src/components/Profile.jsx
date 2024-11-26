@@ -1,12 +1,17 @@
 import React from 'react';
 import FundCard from './Events/FundCard';
+import { Link } from 'react-router-dom';
+import { logout } from "../store/authSlice";
+import { logout as authLogout } from "../services/auth";
+import { useDispatch } from 'react-redux';
 
 function Profile() {
+    const dispatch = useDispatch();
 
     const campaigns = [
         {
           id: 1,
-          img: "../../public/images/fundraiserPlaceholderImg.jpg",
+          img: "../../images/fundraiserPlaceholderImg.jpg",
           title: "Campaign 1",
           description: "Description of Campaign 1",
           amount: 10000,
@@ -14,7 +19,7 @@ function Profile() {
         },
         {
           id: 2,
-          img: "../../public/images/fundraiserPlaceholderImg.jpg",
+          img: "../../images/fundraiserPlaceholderImg.jpg",
           title: "Campaign 2",
           description: "Description of Campaign 2",
           amount: 20000,
@@ -31,17 +36,27 @@ function Profile() {
         {/* Profile Image */}
         <div className="flex items-center justify-center my-3 w-[70%] md:w-[50%] lg:w-[30%] p-2 ">
           <img
-            src={"../../public/images/fundraiserPlaceholderImg.jpg"}
+            src={"../../images/fundraiserPlaceholderImg.jpg"}
             alt="Profile"
             className="h-auto w-[80%] rounded-md shadow-md object-contain "
           />
         </div>
-        <div className="flex flex-col items-start justify-center my-2 w-[80%] md:w-[50%] lg:w-[40%] shadow-md p-3">
-          <p className="text-lg"><span className='font-semibold'>Name: </span>John Doe</p>
-          <p className="text-lg"><span className='font-semibold'>Email: </span> john.doe@example.com</p>
-          <p className="text-lg"><span className='font-semibold'>Phone: </span> +1234567890</p>
-          <p className="text-lg"><span className='font-semibold'>Address: </span>: 123 Main St, City, Country</p>
+        <div className='flex w-[80%] md:w-[50%] lg:w-[40%] flex-col items-center gap-2'>
+          <div className="flex flex-col items-start justify-center my-2 shadow-md p-3">
+            <p className="text-lg"><span className='font-semibold'>Name: </span>John Doe</p>
+            <p className="text-lg"><span className='font-semibold'>Email: </span> john.doe@example.com</p>
+            <p className="text-lg"><span className='font-semibold'>Phone: </span> +1234567890</p>
+            <p className="text-lg"><span className='font-semibold'>Address: </span>: 123 Main St, City, Country</p>
+          </div>
+          <Link to="/" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded no-underline"
+          onClick={async () =>{
+            const data = await authLogout();
+            dispatch(logout())
+        }}>
+            Logout
+          </Link>
         </div>
+        {/* logout button */}
       </div>
 
       <div className="w-full mt-10">
@@ -50,7 +65,7 @@ function Profile() {
           <div className="h-1 w-24 bg-yellow-500"></div>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
-          {campaigns.map((campaign) => (
+          {/* {campaigns.map((campaign) => (
             <FundCard
               key={campaign.id}
               img={campaign.img}
@@ -59,7 +74,8 @@ function Profile() {
               amount={campaign.amount}
               collected={campaign.collected}
             />
-          ))}
+          ))} */}
+          <span>No campaigns yet</span>
         </div>
       </div>
     </div>
