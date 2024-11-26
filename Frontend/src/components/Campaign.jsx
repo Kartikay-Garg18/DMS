@@ -23,6 +23,13 @@ function Campaign(props) {
         }).format(amount);
       };
     
+      const handleDonate = () => {
+        const paymentDetailsElement = document.getElementById('paymentDetails');
+        if (paymentDetailsElement) {
+          paymentDetailsElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+    
       
     return (
       <div className='flex flex-col gap-5 mx-[5vw] justify-center items-center'>
@@ -37,7 +44,7 @@ function Campaign(props) {
                 </div>
                 <div className="flex flex-col items-center justify-center w-[90%] md:w-[85%] lg:w-[40%] gap-3 my-2 shadow-xl bg-gray-100 p-3">
                 
-                <button className="mt-2 p-3 rounded-lg bg-red-400 text-xl font-semibold text-white hover:bg-pink-400 w-[50%] ">Donate Now</button>
+                <button className="mt-2 p-3 rounded-lg bg-red-400 text-xl font-semibold text-white hover:bg-pink-400 w-[50%] " onClick={handleDonate}>Donate Now</button>
                 <h2 className=" text-3xl">{formatCurrency(props.amount)}</h2>
                 <p className="text-lg text-gray-600">Collected <span className="font-semibold text-black">{formatCurrency(amtCollected)}</span> of goal </p>
                 <div className="bg-blue-100 rounded-full h-2.5  w-[70%]">
@@ -63,7 +70,7 @@ function Campaign(props) {
                 <p className='text-[17px] text-gray-700 text-center lg:w-[70%]'>{props.about} </p>
             </div>
             <div className='flex flex-col justify-center items-center rounded-lg shadow-lg mt-5 lg:w-[70vw]
-            lg:mx-auto'>
+            lg:mx-auto ' id='paymentDetails'>
                 <h2 className='p-2 text-2xl '>Payment Methods</h2>
                 <div className="flex justify-center mb-3">
             <div className="h-1 w-24 bg-yellow-500"></div>

@@ -2,11 +2,10 @@ import React, {useState, useEffect} from "react";
 import FundCard from "./FundCard";
 import { getCampaigns } from "../../services/campaigns";
 
-
-
-
 const MainContent = ({selectedCategory}) => {
+  
   const [campaigns, setCampaigns] = useState([]);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,7 +27,7 @@ const MainContent = ({selectedCategory}) => {
 
     return currentDate >= startDate && currentDate <= endDate;
   };
-  console.log(selectedCategory);
+  console.log(selectedCategory+"asha");
   
 
   const filteredData = selectedCategory
