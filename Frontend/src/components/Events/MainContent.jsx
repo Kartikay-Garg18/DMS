@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from "react";
 import FundCard from "./FundCard";
 import { getCampaigns } from "../../services/campaigns";
+import { Link } from "react-router-dom";
 
 const data=[
   {
     id:"1",
-    img:"https://kettocdn.gumlet.io/media/campaign/947000/947926/image/wid66ee777aa4163.jpg?w=300&dpr=1.3",
-    fundRaiser:"Chetna Raina",
+    img:'https://kettocdn.gumlet.io/media/campaigns/957000/957508/image/XRgpLMfG4y1XJtA5noYqtMCJfE6r9mrFhVJvJkrZ.jpg?w=768&dpr=1.3',
+    fundRaiser:"Ishika Goyal",
     strtDate:"2024-11-01",
     endDate:"2024-11-30",
-    amt: 100000,
+    amt: 999998,
     amtCollected:34000,
     category:"HealthCare",
-    description:"My Father Is Suffering From Kidney (renal) Failure. We Need Your Help To Provide For His Treatment",
+    description:"Money for Heart Transplant",
     isLive:true
 
   },
@@ -98,7 +99,7 @@ const MainContent = ({selectedCategory}) => {
         </div>
         <div className="flex flex-wrap justify-center gap-3 xl:justify-around">
        {filteredData.map((fund) => (
-          <div key={fund._id} className="w-full sm:w-1/2 md:w-auto xl: p-1">
+          <Link to="/campaign" key={fund._id} className="w-full sm:w-1/2 md:w-auto xl: p-1 no-underline">
             <FundCard
               img={fund.img}
               fundRaiser={fund.fundRaiser}
@@ -110,7 +111,7 @@ const MainContent = ({selectedCategory}) => {
               description={fund.description}
               isLive={fund.isLive}
             />
-          </div>
+          </Link>
         ))}
       </div>
     </div>
