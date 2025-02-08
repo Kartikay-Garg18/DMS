@@ -3,12 +3,12 @@ import Cookies from 'js-cookie';
 
 const API_URL = import.meta.env.VITE_APP_API_URI;
 
-const setAccessToken = async (token) => {
-  await Cookies.set('accessToken', token, { expires: 1 });
+const setAccessToken = (token) => {
+  Cookies.set('accessToken', token, { expires: 1 });
 };
 
-const setRefreshToken = async (token) => {
-  await Cookies.set('refreshToken', token, { expires: 7 });
+const setRefreshToken =  (token) => {
+ Cookies.set('refreshToken', token, { expires: 7 });
 };
 
 const createAccount = async (data) => {
@@ -31,8 +31,8 @@ const login = async (data) => {
       email : data.email,
       password : data.password
     });
-    await setAccessToken(response.data.data.accessToken);
-    await setRefreshToken(response.data.data.refreshToken);
+    setAccessToken(response.data.data.accessToken);
+    setRefreshToken(response.data.data.refreshToken);
     return response.data;
   } catch (error) {
     return error.response.data;
