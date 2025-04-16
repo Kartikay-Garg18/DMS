@@ -13,7 +13,7 @@ function SideBar({ setSelectedCategory }){
       <>
           <Card className="fixed  left-0 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-[#406b81]">
             <div className="mb-2 p-4">
-              <Typography variant="h5" className='text-black text-2xl' color=""
+              <Typography variant="h5" className='text-black text-2xl' color="current"
   >
                Events
               </Typography>

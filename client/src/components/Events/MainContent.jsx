@@ -39,7 +39,7 @@ const data=[
     amt: 50000,
     amtCollected:30000,
     category:"Education Aid",
-    description:"Stand with Pramod’s Family: Donate for Their Future",
+    description:"Stand with Pramod's Family: Donate for Their Future",
     isLive:true
 
   },
@@ -60,35 +60,30 @@ const data=[
 
 const MainContent = ({selectedCategory}) => {
   
-  // const [campaigns, setCampaigns] = useState([]);
+  const [campaigns, setCampaigns] = useState([]);
   
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await getCampaigns();
-  //       console.log(response.data);
-  //       setCampaigns(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching campaigns:', error);
-  //     }
-  //   };
+  useEffect(() => {
+      try {
+        const response = getCampaigns();
+        setCampaigns(response.data);
+      } catch (error) {
+        console.error('Error fetching campaigns:', error);
+      }
+  }, []);
 
-  //   fetchData();
-  // }, []);
+  const isLive = (fund) => {
+    const currentDate = new Date();
+    const startDate = new Date(fund.startDate);
+    const endDate = new Date(fund.endDate);
 
-  // const isLive = (fund) => {
-  //   const currentDate = new Date();
-  //   const startDate = new Date(fund.startDate);
-  //   const endDate = new Date(fund.endDate);
-
-  //   return currentDate >= startDate && currentDate <= endDate;
-  // };
+    return currentDate >= startDate && currentDate <= endDate;
+  };
   // console.log(selectedCategory+"asha");
   
 
-  const filteredData = selectedCategory
-    ? data.filter(fund => fund.category === selectedCategory)
-    : data.filter(fund => fund.isLive);
+  // const filteredData = selectedCategory
+  //   ? campaigns.filter(fund => fund.category === selectedCategory)
+  //   : campaigns.filter(fund => fund.isLive);
     
 
   return(
@@ -98,8 +93,8 @@ const MainContent = ({selectedCategory}) => {
             <div className="h-1 w-24 bg-yellow-500"></div>
         </div>
         <div className="flex flex-wrap justify-center gap-3 xl:justify-around">
-       {filteredData.map((fund) => (
-          <Link to="/campaign" key={fund._id} className="w-full sm:w-1/2 md:w-auto xl: p-1 no-underline">
+       {campaigns?.map((fund) => (
+          <Link to="/campaign" key={fund.id} className="w-full sm:w-1/2 md:w-auto xl: p-1 no-underline">
             <FundCard
               img={fund.img}
               fundRaiser={fund.fundRaiser}
